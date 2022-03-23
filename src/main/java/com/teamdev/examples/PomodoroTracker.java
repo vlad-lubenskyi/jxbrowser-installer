@@ -20,6 +20,9 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  * A Pomodoro tracker.
+ *
+ * This app displays a window with the integration browser component that loads and displays
+ * the Pomodoro Tracker web application.
  */
 public final class PomodoroTracker {
 
