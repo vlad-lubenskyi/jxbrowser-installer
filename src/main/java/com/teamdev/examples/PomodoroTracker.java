@@ -21,7 +21,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 /**
  * A Pomodoro tracker.
  */
-public final class Application {
+public final class PomodoroTracker {
 
     public static final String URL = "https://jxbrowser-support.teamdev.com/docs/tutorials/jpackage/pomodoro.html";
 

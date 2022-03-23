@@ -1,4 +1,3 @@
-import org.panteleyev.jpackage.ImageType
 import org.panteleyev.jpackage.ImageType.*
 
 plugins {
@@ -32,14 +31,11 @@ dependencies {
     implementation(jxbrowser.currentPlatform())
 }
 
-//  --add-exports=java.desktop/sun.awt=ALL-UNNAMED
-// --add-modules java.base,java.desktop,java.logging
-
 tasks {
     val jarDirectory = file("$buildDir/jars")
     jar {
         manifest {
-            attributes["Main-Class"] = "com.teamdev.examples.Application"
+            attributes["Main-Class"] = "com.teamdev.examples.PomodoroTracker"
         }
         archiveFileName.set("main.jar")
         destinationDirectory.set(file(jarDirectory))
