@@ -3,7 +3,7 @@ import org.panteleyev.jpackage.ImageType.*
 plugins {
     java
     id("org.panteleyev.jpackageplugin") version "1.3.1"
-    id("com.teamdev.jxbrowser.gradle") version "0.0.1"
+    id("com.teamdev.jxbrowser.gradle") version "0.0.3"
 }
 
 
@@ -22,7 +22,7 @@ java {
 
 
 jxbrowser {
-    version = "7.23-b6-eap"
+    version = "7.24"
     includePreviewBuilds()
 }
 
