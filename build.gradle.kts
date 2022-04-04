@@ -22,7 +22,7 @@ java {
 
 
 jxbrowser {
-    version = "7.24"
+    version = "7.24.1"
     includePreviewBuilds()
 }
 
