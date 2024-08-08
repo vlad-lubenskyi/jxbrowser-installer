@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 TeamDev.
+ * Copyright 2000-2024 TeamDev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ import org.panteleyev.jpackage.ImageType.*
 plugins {
     java
     id("org.panteleyev.jpackageplugin") version "1.3.1"
-    id("com.teamdev.jxbrowser.gradle") version "0.0.3"
+    id("com.teamdev.jxbrowser") version "1.1.0"
 }
 
 
@@ -37,8 +37,7 @@ java {
 
 
 jxbrowser {
-    version = "7.34"
-    includePreviewBuilds()
+    version = "7.40.0"
 }
 
 dependencies {
