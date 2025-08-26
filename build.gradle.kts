@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 TeamDev.
+ * Copyright 2000-2025 TeamDev.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,77 +17,72 @@ import org.panteleyev.jpackage.ImageType.*
 
 plugins {
     java
-    id("org.panteleyev.jpackageplugin") version "1.3.1"
-    id("com.teamdev.jxbrowser") version "1.1.0"
+    id("com.gradleup.shadow") version "9.0.2"
+    id("com.teamdev.jxbrowser") version "2.0.0"
+    id("org.panteleyev.jpackageplugin") version "1.7.3"
 }
-
 
 group = "com.teamdev.examples"
 version = "1.0"
 
 repositories {
     mavenCentral()
-
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
-
 jxbrowser {
-    version = "7.40.0"
+    version = "8.11.0"
 }
 
 dependencies {
-    implementation(jxbrowser.swing())
-    implementation(jxbrowser.currentPlatform())
+    implementation(jxbrowser.swing)
+    implementation(jxbrowser.currentPlatform)
 }
 
 tasks {
-    val jarDirectory = file("$buildDir/jars")
-    jar {
+    val jarName = "main.jar"
+    shadowJar {
         manifest {
             attributes["Main-Class"] = "com.teamdev.examples.PomodoroTracker"
         }
-        archiveFileName.set("main.jar")
-        destinationDirectory.set(file(jarDirectory))
+        archiveFileName.set(jarName)
     }
 
-    register<Copy>("copyDependencies") {
-        from(configurations.runtimeClasspath).into(jarDirectory)
+    val fatJarLocation by lazy {
+        shadowJar.get().destinationDirectory
     }
 
     jpackage {
         // Build and gather JAR files before packaging.
-        dependsOn("jar", "copyDependencies")
+        dependsOn(shadowJar)
 
         // The path to Java modules.
-        val javaModules = "${System.getProperty("java.home")}/jmods"
-        input = jarDirectory.absolutePath
-        mainJar = "main.jar"
+        input = fatJarLocation
+        mainJar = jarName
         addModules = listOf("java.base", "java.desktop", "java.logging")
-        modulePaths = listOf(javaModules)
-        destination = "$buildDir/dist"
+        destination = project.layout.buildDirectory.dir("dist")
 
-        appName = "JxBrowser Example"
+        appName = "Pomodoro tracker"
         appVersion = "${project.version}"
 
         linux {
             type = DEB
-            icon = "jxbrowser-logo.png"
-            linuxPackageName = "jxbrowser-example"
+            icon = projectDir.resolve("app-logo.png")
+            linuxPackageName = "pomodoro-tracker"
         }
         windows {
             type = MSI
-            icon = "jxbrowser-logo.ico"
+            icon = projectDir.resolve("app-logo.ico")
             winMenu = true
             winDirChooser = true
         }
         mac {
             type = DMG
-            icon = "jxbrowser-logo.icns"
+            icon = projectDir.resolve("app-logo.icns")
         }
     }
 }

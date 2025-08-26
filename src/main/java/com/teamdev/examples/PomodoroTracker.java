@@ -30,12 +30,12 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 /**
  * A Pomodoro tracker.
  *
- * This app displays a window with the integration browser component that loads and displays
+ * <p>This app displays a window with the integration browser component that loads and displays
  * the Pomodoro Tracker web application.
  */
 public final class PomodoroTracker {
 
-    public static final String URL = "https://jxbrowser-support.teamdev.com/docs/tutorials/jpackage/pomodoro.html";
+    public static final String URL = "https://teamdev.com/jxbrowser/docs/tutorials/jpackage/pomodoro.html";
 
     public static void main(String[] args) {
         var splash = showSplashScreen();

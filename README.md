@@ -2,11 +2,15 @@
 
 A simple project that demonstrates how to create installers for JxBrowser applications using `jpackage`.
 
+This project was created for the
+["How to create installer for Java application"](https://teamdev.com/jxbrowser/blog/how-to-create-installer-for-java-application/)
+article. 
+
 ### System Requirements
 
 To use this project follow the steps:
 
-1. Install JDK 16.
+1. Install JDK 21.
 2. For Windows, install [WiX Toolset](https://wixtoolset.org/releases/).
 3. Make sure your environment meets
    the [requirements](https://jxbrowser-support.teamdev.com/docs/guides/introduction/requirements.html) of JxBrowser.
